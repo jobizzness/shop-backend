@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,14 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'database' => env('DB_DATABASE'),
+            'dsn' => env('DB_DSN'),
+            'options'  => [
+                'database' => 'admin' // sets the authentication database required by mongo 3
+            ]
+        ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),
