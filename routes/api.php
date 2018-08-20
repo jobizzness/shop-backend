@@ -12,6 +12,7 @@
 */
 Route::prefix('v1')->group(function(){
 
+
     //Authenticated routes only
     //For authenticated users who want to modify their own data
     //like profile and so on...
@@ -32,8 +33,9 @@ Route::prefix('v1')->group(function(){
     // Public routes are routes that dont require any form of authentication
     // meaning it's available to the public.
     // like to get the public information of a shop
-    Route::middleware(['auth:api'])->group(function () {
-        Route::resource('shop', 'Shop\ShopController');
+    //Also auth routes are here
+    Route::middleware(['api'])->group(function () {
+        Route::post('auth:action', 'Auth\AuthController@index');
     });
 
     //This group requires some form of authenticaion,
