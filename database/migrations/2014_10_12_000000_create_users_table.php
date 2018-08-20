@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function ($collection) {
             $collection->index('id');
-
             $collection->unique('email');
         });
     }

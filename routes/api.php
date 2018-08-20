@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,7 +10,22 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix('v1')->group(function(){
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    //Authenticated routes only
+    Route::middleware(['auth:api'])->group(function () {
+        Route::resource('user', 'User\UserController');
+    });
+
+    //Authenticated Admin only routes
+    Route::middleware(['auth:api'])->prefix('admin')->group(function () {
+        Route::resource('user', 'User\AdminUserController');
+    });
+
+
+    //Non authenticated routes change
+    //TODO change auth middleware to public
+    Route::middleware(['auth:api'])->group(function () {
+        Route::resource('user', 'Shop\ShopController');
+    });
 });
