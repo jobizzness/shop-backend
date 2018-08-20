@@ -152,6 +152,7 @@ return [
          */
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         Jenssegers\Mongodb\Auth\PasswordResetServiceProvider::class,
+        DesignMyNight\Mongodb\MongodbPassportServiceProvider::class,
 
         /*
          * Application Service Providers...

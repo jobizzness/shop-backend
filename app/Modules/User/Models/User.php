@@ -2,14 +2,15 @@
 
 namespace App\Modules\User\Models;
 
-use Moloquent;
+use DesignMyNight\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Mloquent
+class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = '_id';
+    
     /**
      * The attributes that are mass assignable.
      *
